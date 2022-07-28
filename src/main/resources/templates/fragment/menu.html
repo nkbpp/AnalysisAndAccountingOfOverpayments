@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+</head>
+<body>
+
+<nav th:fragment="menu" class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" th:href="@{/aaaop/index}">Главная</a>
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-trigger"
+                       href="#"
+                       id="menuFindCitizen"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false"
+                    >
+                        Поиск гражданина
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuFindCitizen">
+                        <li><a class="dropdown-item" href="/aaaop/index/findCitizenBySnils" id="findBySnils">Поиск по СНИЛС</a></li>
+                        <li><a class="dropdown-item" href="/aaaop/index/findCitizenByFio" id="findByFio">Поиск по ФИО</a></li>
+                        <li><a class="dropdown-item" href="/aaaop/index/findCitizenByDistrict" id="findByDistrict">Поиск по району</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-trigger"
+                       href="#"
+                       id="menuAddCitizen"
+                        role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false"
+                    >
+                        Добавить гражданина
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuAddCitizen">
+                        <li><a class="dropdown-item" href="#" id="pensioner">Пенсионер</a></li>
+                        <li><a class="dropdown-item" href="#" id="carer">Лицо осуществляющее уход</a></li>
+                        <li><a class="dropdown-item" href="#" id="dependent">Иждивенец</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page"
+                       href="#"
+                       id="menuInformationOverpayments">
+                        Информация по делу с переплатами
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page"
+                       href="#"
+                       id="menuOverpayments16">
+                        Информация по делу с переплатами
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page"
+                       href="#"
+                       id="menuControl">
+                        Контроль
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page"
+                       href="#"
+                       id="menuStatistics">
+                        Статистика
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page"
+                       href="#"
+                       id="menuDirectory">
+                        Справочник
+                    </a>
+                </li>
+
+<!--                <li sec:authorize="hasRole('ROLE_UPDATE')" class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Справочники
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#" id="vidObespSpisokViev">Вид обеспечения</a></li>
+                        <li><a class="dropdown-item" href="#" id="kontragentSpisokViev">Контрагент</a></li>
+                    </ul>
+                </li>-->
+
+
+            </ul>
+            <form
+                    class="d-flex"
+                    id="logout"
+                    name="logout"
+                    th:action="@{/logout}"
+                    method="post"
+            >
+                <div class="text-center text-success align-self-center mx-2">Пользователь:
+                    <span <!--todo sec:authorize="isAuthenticated()"  sec:authentication="principal.login"-->>Пользователь</span>
+                </div>
+                <button class="btn btn-outline-success" type="submit">Выйти</button>
+
+            </form>
+        </div>
+    </div>
+</nav>
+
+</body>
+</html>
