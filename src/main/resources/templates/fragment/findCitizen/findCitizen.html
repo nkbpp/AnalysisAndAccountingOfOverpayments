@@ -6,95 +6,138 @@
 <body>
 <div th:insert="fragment/menu :: menu"></div>
 
-<form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
+<!--<form action="#" th:action="@{/greeting}" th:object="${greeting}" method="post">
     <p>Id: <input type="text" th:field="*{id}" /></p>
     <p>Message: <input type="text" th:field="*{content}" /></p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
-</form>
+</form>-->
 
-<form>
-    <div class="row" th:switch="${find}">
-        <div class="col-2" th:case="'snils'">
-            <input
-                    class="form-control m-1"
-                    type="text"
-                    name="snils"
-                    id="snils"
-                    placeholder="СНИЛС"/>
+<div th:switch="${find}">
+    <form th:case="'snils'"
+          action="#"
+          th:action="@{/aaaop/index/findCitizenSNILS}"
+          th:object="${snilsdto}"
+          method="post">
+        <div class="row">
+            <div class="col-2">
+                <input  th:field="*{snils}"
+                        class="form-control m-1"
+                        type="text"
+                        name="snils"
+                        id="snils"
+                        placeholder="СНИЛС"/>
+            </div>
+            <div class="col-2">
+                <input type="submit" value="Поиск" />
+            </div>
         </div>
-        <div class="col-2" th:case="'fio'">
-            <input
-                    class="form-control m-1"
-                    type="text"
-                    name="surname"
-                    id="surname"
-                    placeholder="Фамилия"/>
-            <input
-                    class="form-control m-1"
-                    type="text"
-                    name="name"
-                    id="name"
-                    placeholder="Имя"/>
-            <input
-                    class="form-control m-1"
-                    type="text"
-                    name="patronymic"
-                    id="patronymic"
-                    placeholder="Отчество"/>
+    </form>
+    <form th:case="'fio'"
+          action="#"
+          th:action="@{/aaaop/index/findCitizenFIO}"
+          th:object="${fiodto}"
+          method="post">
+        <div class="row">
+            <div class="col-2" >
+                <input
+                        th:field="*{surname}"
+                        class="form-control m-1"
+                        type="text"
+                        name="surname"
+                        id="surname"
+                        placeholder="Фамилия"/>
+                <input
+                        th:field="*{name}"
+                        class="form-control m-1"
+                        type="text"
+                        name="name"
+                        id="name"
+                        placeholder="Имя"/>
+                <input
+                        th:field="*{patronymic}"
+                        class="form-control m-1"
+                        type="text"
+                        name="patronymic"
+                        id="patronymic"
+                        placeholder="Отчество"/>
+                <input
+                        th:field="*{dateOfBirth}"
+                        class="form-control m-1"
+                        type="date"
+                        name="dateOfBirth"
+                        id="dateOfBirth"
+                        placeholder="Дата рождения"/>
+            </div>
+            <div class="col-2">
+                <input type="submit" value="Поиск" />
+            </div>
         </div>
-        <div class="col-2" th:case="'district'">
-            <select id="district" name="district" class="form-select">
-                <option th:text="'ОТДЕЛЕНИЕ ПЕНСИОННОГО ФОНДА РОССИЙСКОЙ ФЕДЕРАЦИИ ПО БЕЛГОРОДСКОЙ ОБЛАСТИ'"
-                        value="0"></option>
-                <option th:text="'Белгород'"
-                        value="1"></option>
-                <option th:text="'Старый Оскол'"
-                        value="2"></option>
-                <option th:text="'Губкин'"
-                        value="3"></option>
-                <option th:text="'Шебекино'"
-                        value="4"></option>
-                <option th:text="'Алексеевка'"
-                        value="5"></option>
-                <option th:text="'Валуйки'"
-                        value="6"></option>
-                <option th:text="'Белгородский район'"
-                        value="7"></option>
-                <option th:text="'Волоконовский район'"
-                        value="13"></option>
-                <option th:text="'Прохоровский район'"
-                        value="14"></option>
-                <option th:text="'Ивнянский район'"
-                        value="15"></option>
-                <option th:text="'Яковлевский район'"
-                        value="16"></option>
-                <option th:text="'Ракитянский район'"
-                        value="17"></option>
-                <option th:text="'Борисовский район'"
-                        value="18"></option>
-                <option th:text="'Красненский район'"
-                        value="19"></option>
-                <option th:text="'Корочанский район'"
-                        value="20"></option>
-                <option th:text="'Грайворонский район'"
-                        value="21"></option>
-                <option th:text="'Вейделевский район'"
-                        value="22"></option>
-                <option th:text="'Ровеньский район'"
-                        value="23"></option>
-                <option th:text="'Красногвардейский район'"
-                        value="24"></option>
-                <option th:text="'Новооскольский район'"
-                        value="25"></option>
-                <option th:text="'Чернянский район'"
-                        value="26"></option>
-                <option th:text="'Краснояружский район'"
-                        value="27"></option>
+    </form>
+    <form th:case="'district'"
+          action="#"
+          th:action="@{/aaaop/index/findCitizen}"
+          th:object="${district}"
+          method="post">
+        <div class="row">
+            <div class="col-2" >
+                <select th:field="*{district}" id="district" name="district" class="form-select">
+                    <option th:text="'ОТДЕЛЕНИЕ ПЕНСИОННОГО ФОНДА РОССИЙСКОЙ ФЕДЕРАЦИИ ПО БЕЛГОРОДСКОЙ ОБЛАСТИ'"
+                            value="0"></option>
+                    <option th:text="'Белгород'"
+                            value="1"></option>
+                    <option th:text="'Старый Оскол'"
+                            value="2"></option>
+                    <option th:text="'Губкин'"
+                            value="3"></option>
+                    <option th:text="'Шебекино'"
+                            value="4"></option>
+                    <option th:text="'Алексеевка'"
+                            value="5"></option>
+                    <option th:text="'Валуйки'"
+                            value="6"></option>
+                    <option th:text="'Белгородский район'"
+                            value="7"></option>
+                    <option th:text="'Волоконовский район'"
+                            value="13"></option>
+                    <option th:text="'Прохоровский район'"
+                            value="14"></option>
+                    <option th:text="'Ивнянский район'"
+                            value="15"></option>
+                    <option th:text="'Яковлевский район'"
+                            value="16"></option>
+                    <option th:text="'Ракитянский район'"
+                            value="17"></option>
+                    <option th:text="'Борисовский район'"
+                            value="18"></option>
+                    <option th:text="'Красненский район'"
+                            value="19"></option>
+                    <option th:text="'Корочанский район'"
+                            value="20"></option>
+                    <option th:text="'Грайворонский район'"
+                            value="21"></option>
+                    <option th:text="'Вейделевский район'"
+                            value="22"></option>
+                    <option th:text="'Ровеньский район'"
+                            value="23"></option>
+                    <option th:text="'Красногвардейский район'"
+                            value="24"></option>
+                    <option th:text="'Новооскольский район'"
+                            value="25"></option>
+                    <option th:text="'Чернянский район'"
+                            value="26"></option>
+                    <option th:text="'Краснояружский район'"
+                            value="27"></option>
 
-            </select>
+                </select>
+            </div>
+            <div class="col-2">
+                <input type="submit" value="Поиск" />
+            </div>
         </div>
-    </div>
-</form>
+    </form>
+</div>
+
+
 
 <!--<div>
     <p>

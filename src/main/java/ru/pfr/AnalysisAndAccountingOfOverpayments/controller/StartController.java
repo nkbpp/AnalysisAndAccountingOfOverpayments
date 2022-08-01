@@ -2,16 +2,14 @@ package ru.pfr.AnalysisAndAccountingOfOverpayments.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.dto.findCitizen.district.DistrictDto;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.dto.findCitizen.fio.FIODto;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.dto.findCitizen.snils.SNILSDto;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.ros.citizen.Citizen;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.service.ros.CitizenService;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @Controller
@@ -60,6 +58,7 @@ public class StartController {
             Model model
     ){
         model.addAttribute("find", "snils");
+        model.addAttribute("snilsdto", new SNILSDto());
         return "fragment/findCitizen/findCitizen";
     }
 
@@ -68,6 +67,7 @@ public class StartController {
             Model model
     ){
         model.addAttribute("find", "fio");
+        model.addAttribute("fiodto", new FIODto());
         return "fragment/findCitizen/findCitizen";
     }
 
@@ -76,32 +76,31 @@ public class StartController {
             Model model
     ){
         model.addAttribute("find", "district");
+        model.addAttribute("district", new DistrictDto());
         return "fragment/findCitizen/findCitizen";
     }
 
 
-    @RequestMapping(value="/findCitizen", method= RequestMethod.POST)
-    public String greetingSubmit(@ModelAttribute SNILSDto snils, Model model) {
+    @PostMapping(value="/findCitizenSNILS")
+    public String findCitizenSNILSDto(@Valid SNILSDto snils, Model model) {
         List<Citizen> citizen = citizenService
                 .findBySnils(snils.getSnils());
-        //model.addAttribute("greeting", greeting);
         return "index";
     }
 
-    @RequestMapping(value="/findCitizen", method= RequestMethod.POST)
-    public String greetingSubmit(@ModelAttribute FIODto fio, Model model) {
-        List<Citizen> citizen = citizenService
-                .findByFIO(fio.getSurname(), fio.getName(), fio.getPatronymic());
-        //model.addAttribute("greeting", greeting);
+    @PostMapping(value="/findCitizenFIO")
+    public String findCitizenFIODto(@Valid FIODto fio, Model model) {
+        /*List<Citizen> citizen = citizenService
+                .findByFIO(fio.getSurname(), fio.getName(), fio.getPatronymic());*/
         return "index";
     }
 
-    @RequestMapping(value="/findCitizen", method= RequestMethod.POST)
+    /*    @RequestMapping(value="/findCitizen", method= RequestMethod.POST)
     public String greetingSubmit(@ModelAttribute DistrictDto district, Model model) {
         List<Citizen> citizen = citizenService
                 .findByDistrict(district.getNumDistrict());
         //model.addAttribute("greeting", greeting);
         return "index";
-    }
+    }*/
 
 }

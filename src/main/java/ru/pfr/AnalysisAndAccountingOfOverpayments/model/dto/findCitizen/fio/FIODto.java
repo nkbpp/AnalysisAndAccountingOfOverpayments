@@ -1,11 +1,17 @@
 package ru.pfr.AnalysisAndAccountingOfOverpayments.model.dto.findCitizen.fio;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.annotations.fio.CustomDateDeserializerRuAndEn;
 
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
+@Data //@ToString, @EqualsAndHashCode, @Getter, @Setter, @RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class FIODto {
 
     @NotNull(message = "surname cannot be null")
@@ -18,45 +24,4 @@ public class FIODto {
     @JsonDeserialize(using = CustomDateDeserializerRuAndEn.class)
     private LocalDate dateOfBirth;
 
-    public FIODto() {
-    }
-
-    public FIODto(String surname, String name, String patronymic, LocalDate dateOfBirth) {
-        this.surname = surname;
-        this.name = name;
-        this.patronymic = patronymic;
-        this.dateOfBirth = dateOfBirth;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
-    }
-
-    public LocalDate getDateOfBirth() {
-        return dateOfBirth;
-    }
-
-    public void setDateOfBirth(LocalDate dateOfBirth) {
-        this.dateOfBirth = dateOfBirth;
-    }
 }
