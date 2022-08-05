@@ -13,9 +13,10 @@
 </form>-->
 
 <div th:switch="${find}">
+    <!--th:action="@{/aaaop/index/findCitizenSNILS}"-->
     <form th:case="'snils'"
           action="#"
-          th:action="@{/aaaop/index/findCitizenSNILS}"
+
           th:object="${snilsdto}"
           method="post">
         <div class="row">
@@ -28,7 +29,7 @@
                         placeholder="СНИЛС"/>
             </div>
             <div class="col-2">
-                <input type="submit" value="Поиск" />
+                <input class="btn btn-dark" type="btn" value="Поиск" id="btnFindCitizenSNILS"/>
             </div>
         </div>
     </form>

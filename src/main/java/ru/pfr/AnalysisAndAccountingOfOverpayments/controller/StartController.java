@@ -1,5 +1,6 @@
 package ru.pfr.AnalysisAndAccountingOfOverpayments.controller;
 
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -81,8 +82,9 @@ public class StartController {
     }
 
 
-    @PostMapping(value="/findCitizenSNILS")
-    public String findCitizenSNILSDto(@Valid SNILSDto snils, Model model) {
+    @PostMapping(path ="/findCitizenSNILS", produces = MediaType.APPLICATION_JSON_VALUE,
+    consumes = MediaType.APPLICATION_JSON_VALUE)
+    public String findCitizenSNILSDto(@RequestBody @Valid SNILSDto snils, Model model) {
         List<Citizen> citizen = citizenService
                 .findBySnils(snils.getSnils());
         return "index";
