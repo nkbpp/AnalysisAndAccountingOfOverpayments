@@ -1,10 +1,19 @@
 package ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.ros;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
+
 import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.NotNull;
-
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+//@SuperBuilder
 @MappedSuperclass
 public class SuperIDFIO extends SuperID{
 
@@ -18,37 +27,10 @@ public class SuperIDFIO extends SuperID{
     @Column(name = "OT")
     private String patronymic;
 
-    public SuperIDFIO() {
-    }
-
     public SuperIDFIO(String id, String surname, String name, String patronymic) {
         super(id);
         this.surname = surname;
         this.name = name;
-        this.patronymic = patronymic;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
     }
 }

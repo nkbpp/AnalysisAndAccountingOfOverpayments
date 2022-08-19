@@ -1,17 +1,26 @@
 package ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.ros.citizen;
 
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.experimental.SuperBuilder;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.annotations.district.District;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.annotations.fio.CustomDateDeserializerRuAndEn;
-import ru.pfr.AnalysisAndAccountingOfOverpayments.model.annotations.snils.CheckSNILS;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.ros.SuperIDFIO;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+//@SuperBuilder
 @Entity
 @Table(name = "MAN", schema = "PF")
 public class Citizen extends SuperIDFIO {
@@ -36,10 +45,12 @@ public class Citizen extends SuperIDFIO {
     @Column(name = "NPERS")
     private String snils;
 
-    public Citizen() {
-    }
 
-    public Citizen(String id, String surname, String name, String patronymic, LocalDate rdat, String adrfakt, String adrreg, String tel, Integer district, String snils) {
+
+    @Builder
+    public Citizen(String id,
+                   String surname, String name, String patronymic,
+                   LocalDate rdat, String adrfakt, String adrreg, String tel, Integer district, String snils) {
         super(id, surname, name, patronymic);
         this.rdat = rdat;
         this.adrfakt = adrfakt;
@@ -48,6 +59,4 @@ public class Citizen extends SuperIDFIO {
         this.district = district;
         this.snils = snils;
     }
-
-
 }

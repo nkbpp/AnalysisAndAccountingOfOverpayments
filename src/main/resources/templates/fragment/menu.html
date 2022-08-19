@@ -33,13 +33,13 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuFindCitizen">
                         <li><a class="dropdown-item"
-                               href="/aaaop/index/vievFindCitizenBySnils"
+                               href="/aaaop/vievFindCitizenBySnils"
                                id="vievFindBySnils">Поиск по СНИЛС</a></li>
                         <li><a class="dropdown-item"
-                               href="/aaaop/index/vievFindCitizenByFio"
+                               href="/aaaop/vievFindCitizenByFio"
                                id="vievFindByFio">Поиск по ФИО</a></li>
                         <li><a class="dropdown-item"
-                               href="/aaaop/index/vievFindCitizenByDistrict"
+                               href="/aaaop/vievFindCitizenByDistrict"
                                id="vievFindByDistrict">Поиск по району</a></li>
                     </ul>
                 </li>
@@ -60,19 +60,38 @@
                         <li><a class="dropdown-item" href="#" id="dependent">Иждивенец</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page"
+                <li class="nav-item dropdown">
+
+                    <a class="nav-link dropdown-trigger"
                        href="#"
-                       id="menuInformationOverpayments">
+                       id="menuInformationOverpayments"
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false"
+                    >
                         Информация по делу с переплатами
                     </a>
+
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuInformationOverpayments">
+                        <li><a class="dropdown-item"
+                               href="/aaaop/vievOverpaymentCitizenData">Данные о гражданине</a></li>
+                        <li><a class="dropdown-item"
+                               href="/aaaop/vievOverpaymentOverpaymentData">Данные о переплате</a></li>
+                        <li><a class="dropdown-item"
+                               href="/aaaop/vievOverpaymentNotificationLetters">Уведомительные письма</a></li>
+                        <li><a class="dropdown-item"
+                               href="/aaaop/vievOverpaymentRepayment">Погашение/удержание</a></li>
+                        <li><a class="dropdown-item"
+                               href="/aaaop/vievOverpaymentPunishment">Взыскание в судебном порядке</a></li>
+                        <li><a class="dropdown-item"
+                               href="/aaaop/vievOverpaymentWriteOff">Списание</a></li>
+                    </ul>
+
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page"
-                       href="#"
-                       id="menuOverpayments16">
-                        Информация по делу с переплатами
-                    </a>
+                    <a class="nav-link"
+                       aria-current="page"
+                       href="/aaaop/vievControlOnAccount16">Переплаты для контроля по 16 счету</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page"
@@ -88,24 +107,27 @@
                         Статистика
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" aria-current="page"
+                <li class="nav-item dropdown" >
+                    <a class="nav-link dropdown-trigger"
                        href="#"
-                       id="menuDirectory">
+                       role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false"
+                       id="menuReferenceBook"
+                    >
                         Справочник
                     </a>
-                </li>
-
-<!--                <li sec:authorize="hasRole('ROLE_UPDATE')" class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Справочники
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#" id="vidObespSpisokViev">Вид обеспечения</a></li>
-                        <li><a class="dropdown-item" href="#" id="kontragentSpisokViev">Контрагент</a></li>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuReferenceBook">
+                        <li><a class="dropdown-item"
+                               href="/aaaop/referenceBook/vievReferenceBookDataForNotificationLetters">Должности, ФИО, телефоны</a></li>
+                        <li><a class="dropdown-item"
+                               href="/aaaop/referenceBook/vievReferenceBookRequisitesForRedemption">Реквизиты для погашения переполученных сумм выплат</a></li>
+                        <li><a class="dropdown-item"
+                               href="/aaaop/referenceBook/vievReferenceBookReasonsForOverpayments">Причины переплат</a></li>
+                        <li><a class="dropdown-item"
+                               href="/aaaop/referenceBook/vievReferenceBookSpecificationOfTheReasonsForOverpayments">Конкретизация причин переплат</a></li>
                     </ul>
-                </li>-->
-
+                </li>
 
             </ul>
             <form
@@ -116,7 +138,8 @@
                     method="post"
             >
                 <div class="text-center text-success align-self-center mx-2">Пользователь:
-                    <span <!--todo sec:authorize="isAuthenticated()"  sec:authentication="principal.login"-->>Пользователь</span>
+                    <!--todo sec:authorize="isAuthenticated()"  sec:authentication="principal.login"-->
+                    <span >Пользователь</span>
                 </div>
                 <button class="btn btn-outline-success" type="submit">Выйти</button>
 

@@ -15,19 +15,19 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 
 @EnableJpaRepositories(
-        entityManagerFactoryRef = DatabaseROSConfig.ENTITY_MANAGER_FACTORY,
-        transactionManagerRef = DatabaseROSConfig.TRANSACTION_MANAGER,
-        basePackages = DatabaseROSConfig.JPA_REPOSITORY_PACKAGE
+        entityManagerFactoryRef = DatabaseOverpaymentsConfig.ENTITY_MANAGER_FACTORY,
+        transactionManagerRef = DatabaseOverpaymentsConfig.TRANSACTION_MANAGER,
+        basePackages = DatabaseOverpaymentsConfig.JPA_REPOSITORY_PACKAGE
 )
 @Configuration
-public class DatabaseROSConfig {
-    public static final String PROPERTY_PREFIX = "app.dbros.datasource";
-    public static final String JPA_REPOSITORY_PACKAGE = "ru.pfr.AnalysisAndAccountingOfOverpayments.repository.ros";
-    public static final String ENTITY_PACKAGE = "ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.ros";
-    public static final String ENTITY_MANAGER_FACTORY = "rosEntityManagerFactory";
-    public static final String DATA_SOURCE = "rosDataSource";
-    public static final String DATABASE_PROPERTY = "rosDatabaseProperty";
-    public static final String TRANSACTION_MANAGER = "rosTransactionManager";
+public class DatabaseOverpaymentsConfig {
+    public static final String PROPERTY_PREFIX = "app.dboverpayments.datasource";
+    public static final String JPA_REPOSITORY_PACKAGE = "ru.pfr.AnalysisAndAccountingOfOverpayments.repository.overpayments";
+    public static final String ENTITY_PACKAGE = "ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.overpayments";
+    public static final String ENTITY_MANAGER_FACTORY = "overpaymentsEntityManagerFactory";
+    public static final String DATA_SOURCE = "overpaymentsDataSource";
+    public static final String DATABASE_PROPERTY = "overpaymentsDatabaseProperty";
+    public static final String TRANSACTION_MANAGER = "overpaymentsTransactionManager";
 
     @Bean(DATABASE_PROPERTY)
     @ConfigurationProperties(prefix = PROPERTY_PREFIX)
@@ -60,8 +60,8 @@ public class DatabaseROSConfig {
 
         final HashMap<String, Object> properties = new HashMap<>();
         properties.put("javax.persistence.validation.mode", "none");
-        //properties.put("hibernate.hbm2ddl.auto", "update");
-        properties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
+        properties.put("hibernate.hbm2ddl.auto", "update");
+        properties.put("hibernate.dialect", "org.hibernate.dialect.MySQL8Dialect");
         em.setJpaPropertyMap(properties);
         return em;
     }
