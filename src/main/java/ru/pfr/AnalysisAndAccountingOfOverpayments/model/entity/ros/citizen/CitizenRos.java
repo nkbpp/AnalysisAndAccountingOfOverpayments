@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.experimental.SuperBuilder;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.annotations.district.District;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.annotations.fio.CustomDateDeserializerRuAndEn;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.ros.SuperIDFIO;
@@ -13,7 +12,6 @@ import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.ros.SuperIDFIO;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
 
@@ -23,7 +21,7 @@ import java.time.LocalDate;
 //@SuperBuilder
 @Entity
 @Table(name = "MAN", schema = "PF")
-public class Citizen extends SuperIDFIO {
+public class CitizenRos extends SuperIDFIO {
 
     @Column(name = "RDAT")
     @JsonDeserialize(using = CustomDateDeserializerRuAndEn.class)
@@ -48,9 +46,9 @@ public class Citizen extends SuperIDFIO {
 
 
     @Builder
-    public Citizen(String id,
-                   String surname, String name, String patronymic,
-                   LocalDate rdat, String adrfakt, String adrreg, String tel, Integer district, String snils) {
+    public CitizenRos(String id,
+                      String surname, String name, String patronymic,
+                      LocalDate rdat, String adrfakt, String adrreg, String tel, Integer district, String snils) {
         super(id, surname, name, patronymic);
         this.rdat = rdat;
         this.adrfakt = adrfakt;

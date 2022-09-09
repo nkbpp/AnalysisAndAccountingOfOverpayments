@@ -1,4 +1,4 @@
-package ru.pfr.AnalysisAndAccountingOfOverpayments.model.dto.findCitizen.overpayments.referenceBook;
+package ru.pfr.AnalysisAndAccountingOfOverpayments.model.dto.overpayments.referenceBook;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,10 +11,10 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ReasonsForOverpaymentsDto {
+public class SpecificationOfTheReasonsForOverpaymentsDto {
 
     private Long id;
 
-    private String reasonsForOverpayments;
+    private String specificationOfTheReasonsForOverpayments;
 
 }

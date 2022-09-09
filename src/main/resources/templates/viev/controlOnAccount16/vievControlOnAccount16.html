@@ -9,19 +9,11 @@
 <div>
     <form action="#">
         <div class="row p-3">
-            <div class="col-3" >
-                <select id="management" class="form-select">
-                    <option th:text="'Управление выплаты пенсий и социальных выплат'"
-                            value="0"></option>
-                    <option th:text="'Управление установления пенсий'"
-                            value="1"></option>
-                    <option th:text="'Управление установления социальных выплат'"
-                            value="2"></option>
-                    <option th:text="'Управление организации работы клиентских служб'"
-                            value="3"></option>
-                </select>
+            <div class="col-10" >
+                <div class="col-12" th:insert="fragment/select :: structuralSubdivision">
+                </div>
             </div>
-            <div class="col-2">
+            <div class="col-2 d-flex align-items-end m-2">
                 <input class="btn btn-dark" type="btn" value="Поиск" id="btnFindManagement"/>
             </div>
         </div>
@@ -65,5 +57,6 @@
 <div id="paginationFindCitizen" th:include="fragment/pagination :: pagination"></div>
 
 </body>
+<script type="text/javascript" th:src="@{/js/vievControlOnAccount16.js}"></script>
 <script type="text/javascript" src="/webjars/bootstrap/5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </html>

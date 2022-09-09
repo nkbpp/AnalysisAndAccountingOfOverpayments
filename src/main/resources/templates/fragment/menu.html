@@ -45,7 +45,12 @@
                 </li>
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-trigger"
+                    <a class="nav-link" aria-current="page"
+                       href="/aaaop/menuAddCitizen"
+                       id="menuAddCitizen">
+                        Добавить гражданина
+                    </a>
+<!--                    <a class="nav-link dropdown-trigger"
                        href="#"
                        id="menuAddCitizen"
                         role="button"
@@ -58,9 +63,9 @@
                         <li><a class="dropdown-item" href="#" id="pensioner">Пенсионер</a></li>
                         <li><a class="dropdown-item" href="#" id="carer">Лицо осуществляющее уход</a></li>
                         <li><a class="dropdown-item" href="#" id="dependent">Иждивенец</a></li>
-                    </ul>
+                    </ul>-->
                 </li>
-                <li class="nav-item dropdown">
+                <!--<li class="nav-item dropdown">
 
                     <a class="nav-link dropdown-trigger"
                        href="#"
@@ -74,20 +79,26 @@
 
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuInformationOverpayments">
                         <li><a class="dropdown-item"
-                               href="/aaaop/vievOverpaymentCitizenData">Данные о гражданине</a></li>
+                               href="/aaaop/informationOverpayments/vievOverpaymentCitizenData">Данные о гражданине</a></li>
                         <li><a class="dropdown-item"
-                               href="/aaaop/vievOverpaymentOverpaymentData">Данные о переплате</a></li>
+                               href="/aaaop/informationOverpayments/vievOverpaymentData">Данные о переплате</a></li>
                         <li><a class="dropdown-item"
-                               href="/aaaop/vievOverpaymentNotificationLetters">Уведомительные письма</a></li>
+                               href="/aaaop/informationOverpayments/vievOverpaymentNotificationLetters">Уведомительные письма</a></li>
                         <li><a class="dropdown-item"
-                               href="/aaaop/vievOverpaymentRepayment">Погашение/удержание</a></li>
+                               href="/aaaop/informationOverpayments/vievOverpaymentRepayment">Погашение/удержание</a></li>
                         <li><a class="dropdown-item"
-                               href="/aaaop/vievOverpaymentPunishment">Взыскание в судебном порядке</a></li>
+                               href="/aaaop/informationOverpayments/vievOverpaymentPunishment">Взыскание в судебном порядке</a></li>
                         <li><a class="dropdown-item"
-                               href="/aaaop/vievOverpaymentWriteOff">Списание</a></li>
+                               href="/aaaop/informationOverpayments/vievOverpaymentWriteOff">Списание</a></li>
                     </ul>
 
+                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link"
+                       aria-current="page"
+                       href="/aaaop/vievInformationOverpayments">Информация по делу с переплатами</a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link"
                        aria-current="page"
@@ -102,7 +113,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" aria-current="page"
-                       href="#"
+                       href="/aaaop/statistics"
                        id="menuStatistics">
                         Статистика
                     </a>
@@ -118,14 +129,18 @@
                         Справочник
                     </a>
                     <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="menuReferenceBook">
-                        <li><a class="dropdown-item"
-                               href="/aaaop/referenceBook/vievReferenceBookDataForNotificationLetters">Должности, ФИО, телефоны</a></li>
+                        <!--<li><a class="dropdown-item"
+                               href="/aaaop/referenceBook/vievReferenceBookDataForNotificationLetters">Должности, ФИО, телефоны</a></li>-->
                         <li><a class="dropdown-item"
                                href="/aaaop/referenceBook/vievReferenceBookRequisitesForRedemption">Реквизиты для погашения переполученных сумм выплат</a></li>
                         <li><a class="dropdown-item"
                                href="/aaaop/referenceBook/vievReferenceBookReasonsForOverpayments">Причины переплат</a></li>
                         <li><a class="dropdown-item"
                                href="/aaaop/referenceBook/vievReferenceBookSpecificationOfTheReasonsForOverpayments">Конкретизация причин переплат</a></li>
+                        <li><a class="dropdown-item"
+                               href="/aaaop/referenceBook/vievDepartment">Управления</a></li>
+                        <li><a class="dropdown-item"
+                               href="/aaaop/referenceBook/vievDistrict">Районы</a></li>
                     </ul>
                 </li>
 

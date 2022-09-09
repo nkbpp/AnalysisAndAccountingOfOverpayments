@@ -7,10 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.annotations.district.District;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.annotations.fio.CustomDateDeserializerRuAndEn;
-import ru.pfr.AnalysisAndAccountingOfOverpayments.model.dto.findCitizen.fio.FIODto;
-import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.ros.SuperIDFIO;
 
-import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
@@ -18,7 +15,7 @@ import java.time.LocalDate;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class CitizenDto {
+public class CitizenRosDto {
 
     @NotNull(message = "id cannot be null")
     String id;

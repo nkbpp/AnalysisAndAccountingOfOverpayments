@@ -35,7 +35,7 @@ public class FindCitizenController {
             Model model
     ){
         model.addAttribute("find", "district");
-        model.addAttribute("districtdto", new DistrictDto(0));
+        /*model.addAttribute("districtdto", new DistrictDto(0));*/
         return "viev/findCitizen/findCitizen";
     }
 

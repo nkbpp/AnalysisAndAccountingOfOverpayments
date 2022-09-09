@@ -10,24 +10,24 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class CitizenTest {
+class CitizenRosTest {
 
     private final Validator validator = Validation.buildDefaultValidatorFactory()
             .getValidator();
 
     @Test
     public void whenAllAcceptable() {
-        Citizen citizen = new Citizen("1","FI","NA","OT", LocalDate.of(2020,1,1),"","","",0,"112-233-445 95");
-        Set<ConstraintViolation<Citizen>> violations = validator.validate(citizen);
+        CitizenRos citizenRos = new CitizenRos("1","FI","NA","OT", LocalDate.of(2020,1,1),"","","",0,"112-233-445 95");
+        Set<ConstraintViolation<CitizenRos>> violations = validator.validate(citizenRos);
 
         assertThat(violations).isEmpty();
     }
 
     @Test
     public void whenAllNull() {
-        Citizen citizen = new Citizen(null,"FI","NA","OT", LocalDate.of(2020,1,1),"","","",0,"112-233-445 95");
+        CitizenRos citizenRos = new CitizenRos(null,"FI","NA","OT", LocalDate.of(2020,1,1),"","","",0,"112-233-445 95");
 
-        Set<ConstraintViolation<Citizen>> violations = validator.validate(citizen);
+        Set<ConstraintViolation<CitizenRos>> violations = validator.validate(citizenRos);
 
         assertThat(violations).anyMatch(
                 testObjectConstraintViolation ->

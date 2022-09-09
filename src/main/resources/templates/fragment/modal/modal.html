@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+
+<!-- Modal -->
+<div th:fragment="modalSpecificationOfTheReasonsForOverpayments">
+    <div
+            class="modal fade"
+            id="modalSpecificationOfTheReasonsForOverpayments"
+            tabindex="-1"
+            aria-labelledby="modalSpecificationOfTheReasonsForOverpaymentsLabel"
+            aria-hidden="true"
+    >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalSpecificationOfTheReasonsForOverpaymentsLabel">Причинa переплаты</h5>
+                    <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                    ></button>
+                </div>
+                <!--Тело-->
+                <div class="modal-body">
+
+                    <form action="#"
+                          id="formSpecificationOfTheReasonsForOverpayments">
+                        <div class="row">
+                            <div class="col-2">
+                                <label class="form-label m-0" for="idModalSpecificationOfTheReasonsForOverpayments">ID</label>
+                                <input class="form-control" id="idModalSpecificationOfTheReasonsForOverpayments" type="text" disabled>
+                            </div>
+                            <div class="col-10">
+                                <label class="form-label m-0" for="nameModalSpecificationOfTheReasonsForOverpayments">Конкретизация причин переплат</label>
+                                <textarea rows="1" class="form-control" id="nameModalSpecificationOfTheReasonsForOverpayments"></textarea>
+                                <!--<input class="form-control" id="nameModalSpecificationOfTheReasonsForOverpayments" type="text">-->
+                            </div>
+                        </div>
+                        <div class="py-2">
+                            <!--data-bs-dismiss="modal"-->
+                            <button type="button"
+                                    class="btn btn-dark"
+                                    id="updateOrAddSpecificationOfTheReasonsForOverpayments"
+                                    data-bs-dismiss="modal"></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                    >
+                        Закрыть
+                    </button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div th:fragment="reasonsForOverpayments" class="input-field">
+    <label for="selectSpecificationOfTheReasonsForOverpayments" class="form-label m-0">Конкретизация причины переплаты</label>
+    <select id="selectSpecificationOfTheReasonsForOverpayments" name="selectSpecificationOfTheReasonsForOverpayments" class="selectized" tabindex="-1" placeholder="Выберите конкретизацияю причины переплаты">
+        <option value="" selected="selected"></option>
+        <option
+                th:each="r : ${selectSpecificationOfTheReasonsForOverpayments}"
+                th:text="${r.specificationOfTheReasonsForOverpayments}"
+                th:value="${r.id}"
+        ></option>
+    </select>
+</div>-->
+
+
+<!-- Modal -->
+<div th:fragment="modalAddCitizen">
+    <div    class="modal fade"
+            id="modalAddCitizen"
+            tabindex="-1"
+            aria-labelledby="modalAddCitizenLabel"
+            aria-hidden="true"
+    >
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalAddCitizenLabel"></h5>
+                    <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="Close"
+                    ></button>
+                </div>
+                <!--Тело-->
+                <div class="modal-body">
+                    <form action="#"
+                          id="formAddCitizen">
+                        <div class="row">
+                            <div class="col-10">
+                                <label class="form-label m-0" for="snils">СНИЛС</label>
+                                <input  class="form-control snils"
+                                        type="text"
+                                        name="snils"
+                                        id="snils"
+                                        placeholder="Введите СНИЛС"/>
+                            </div>
+                            <div class="col-2 d-flex align-items-end">
+                                <button class="btn btn-dark" id="btnFindCitizenSNILS" type="button">Поиск</button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label m-0" for="surname">Фамилия</label>
+                                <input class="form-control" id="surname" type="text" placeholder="Введите фамилию">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label m-0" for="name">Имя</label>
+                                <input class="form-control" id="name" type="text" placeholder="Введите имя">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label m-0" for="patronymic">Отчество</label>
+                                <input class="form-control" id="patronymic" type="text" placeholder="Введите отчество">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label m-0" for="fullAdress">Полный адрес</label>
+                                <textarea rows="1" class="form-control" id="fullAdress" placeholder="Введите адрес"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col">
+                                <label class="form-label m-0" for="tel">Телефон</label>
+                                <input class="form-control" id="tel" type="text" placeholder="Введите телефон">
+                            </div>
+                        </div>
+                        <div class="py-2">
+                            <button type="button"
+                                    class="btn btn-dark"
+                                    id="btnModalAddCitizen"
+                                    data-bs-dismiss="modal">Добавить</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button
+                            type="button"
+                            class="btn btn-secondary"
+                            data-bs-dismiss="modal"
+                    >
+                        Закрыть
+                    </button>
+                    <!-- <button type="button" class="btn btn-primary">Save changes</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

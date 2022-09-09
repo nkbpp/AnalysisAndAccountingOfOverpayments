@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head th:replace="fragment/head :: head">
+</head>
+<body>
+<div th:insert="fragment/menu :: menu"></div>
+
+<div class="row">
+    <div class="col-2">
+    </div>
+    <div class="col-8">
+        <form method="post"
+              id="formStatistics">
+            <div class="row">
+                <div class="col-12 row" th:insert="fragment/select :: district">
+                </div>
+                <div class="col-12 row" th:insert="fragment/select :: reasonsForOverpayments">
+                </div>
+                <div class="col-12 row" th:insert="fragment/select :: specificationOfTheReasonsForOverpayments">
+                </div>
+<!--                <div class="col-12 row">
+                    <div class="col-10" th:insert="fragment/select :: specificationOfTheReasonsForOverpayments"></div>
+                    <div class="col-2 d-flex align-items-end my-2">
+                        <button
+                                class="btn btn-secondary mx-1 addSpecificationOfTheReasonsForOverpayments"
+                                data-bs-toggle="modal"
+                                data-bs-target="#modalSpecificationOfTheReasonsForOverpayments"
+                                type="button"
+                        >Другое</button>
+                    </div>
+                </div>-->
+                <div class="col-12 row">
+                    <div class="col-3 align-self-center">Дата выявления переплаты</div>
+                    <div class="col-3">
+                        <label for="dateOfDetectionOfOverpaymentStart" class="form-label m-0">c</label>
+                        <input type="text" class="form-control datepicker" placeholder="dd.mm.yyyy" id="dateOfDetectionOfOverpaymentStart" name="dateOfDetectionOfOverpaymentStart">
+                    </div>
+                    <div class="col-3">
+                        <label for="dateOfDetectionOfOverpaymentEnd" class="form-label m-0">по</label>
+                        <input type="text" class="form-control datepicker" placeholder="dd.mm.yyyy" id="dateOfDetectionOfOverpaymentEnd" name="dateOfDetectionOfOverpaymentEnd">
+                    </div>
+                </div>
+
+                <div class="col-12 row">
+                    <div class="col-3 align-self-center">Cумма переплаты</div>
+                    <div class="col-3">
+                        <label for="sumOverpaymentStart" class="form-label m-0">c</label>
+                        <input class="form-control" type="number" id="sumOverpaymentStart" name="sumOverpaymentStart" min="0" step="1" data-bind="value:replyNumber" onkeypress="return ((event.charCode != 45 &amp;&amp; event.charCode != 44 &amp;&amp; event.charCode != 101) &amp;&amp; /^\d*\.{0,1}\d*$/.test(this.value));">
+
+                    </div>
+                    <div class="col-3">
+                        <label for="sumOverpaymentEnd" class="form-label m-0">по</label>
+                        <input class="form-control" type="number" id="sumOverpaymentEnd" name="sumOverpaymentEnd" min="0" step="1" data-bind="value:replyNumber" onkeypress="return ((event.charCode != 45 &amp;&amp; event.charCode != 44 &amp;&amp; event.charCode != 101) &amp;&amp; /^\d*\.{0,1}\d*$/.test(this.value));">
+                    </div>
+                </div>
+
+                <div class="col-12 row">
+                    <div class="col-3 align-self-center">Списание, дата</div>
+                    <div class="col-3">
+                        <label for="writeOffStart" class="form-label m-0">c</label>
+                        <input type="text" class="form-control datepicker" placeholder="dd.mm.yyyy" id="writeOffStart" name="writeOffStart">
+                    </div>
+                    <div class="col-3">
+                        <label for="writeOffEnd" class="form-label m-0">по</label>
+                        <input type="text" class="form-control datepicker" placeholder="dd.mm.yyyy" id="writeOffEnd" name="writeOffEnd">
+                    </div>
+                </div>
+
+                <div class="col-12 row">
+                    <div class="col-3 align-self-center">Погашение/удержание</div>
+                    <div class="col-6">
+                        <label for="redemptionHolding" class="form-label m-0">сколько всего удержано/погашено – суммирование</label>
+                        <input class="form-control" type="number" id="redemptionHolding" name="redemptionHolding" min="0" step="1" data-bind="value:replyNumber" onkeypress="return ((event.charCode != 45 &amp;&amp; event.charCode != 44 &amp;&amp; event.charCode != 101) &amp;&amp; /^\d*\.{0,1}\d*$/.test(this.value));">
+                    </div>
+                </div>
+
+                <div class="col-12 row">
+                    <div class="d-flex justify-content-end">
+                        <button class="btn btn-dark"
+                                id="btnStatistics"
+                                type="button">Поиск</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<table id="tableStatistics" class="table table-block table-secondary table-striped table-hover table-bordered text-center caption-top table-sm">
+    <caption>
+        <div class="row m-0 p-0">
+            <div class="col-11"></div>
+            <div class="col-1">
+                <select id="col" name="col" class="form-select">
+                    <option th:text="30"
+                            value="30"></option>
+                    <option th:text="50"
+                            value="50"></option>
+                    <option th:text="100"
+                            value="100"></option>
+                </select>
+            </div>
+        </div>
+    </caption>
+    <thead>
+    <tr>
+        <th>№ п/п</th>
+        <th>Остаток переплат на начало месяца</th>
+        <th>Выявлено</th>
+        <th>Погашено</th>
+        <th>Удержано</th>
+        <th>Списано</th>
+        <th>Переплата выбыла</th>
+        <th>Остаток на конец месяца</th>
+    </tr>
+    </thead>
+    <tbody>
+    </tbody>
+</table>
+
+<div id="paginationStatistics" th:insert="fragment/pagination :: pagination"></div>
+
+<!--modal-->
+<!--<div th:include="fragment/modal/modal :: modalSpecificationOfTheReasonsForOverpayments"></div>-->
+
+</body>
+<script type="text/javascript" th:src="@{/js/statistics.js}"></script>
+<script type="text/javascript" src="/webjars/bootstrap/5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</html>
