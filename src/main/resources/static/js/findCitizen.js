@@ -2,7 +2,7 @@ $(document).ready(function () {
 
     $("#numDistrict").selectize({
         create: true,
-        sortField: "text",
+        //sortField: "text",
     });
 
     $("body").on('change','#col',function(){

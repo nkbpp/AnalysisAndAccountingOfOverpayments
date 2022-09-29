@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<body>
+
+<!-- Modal -->
+<div th:fragment="addCitizenForm">
+    <div class="row m-0">
+        <div class="col-2">
+            <label class="form-label m-0" for="snils">СНИЛС</label>
+            <input  class="form-control snils"
+                    type="text"
+                    name="snils"
+                    id="snils"
+                    placeholder="Введите СНИЛС"/>
+        </div>
+        <div class="col-1 d-flex align-items-end">
+            <button class="btn btn-dark btnFindCitizenSNILS" type="button">Поиск</button>
+        </div>
+    </div>
+    <div class="row m-0">
+        <div class="col-3">
+            <label class="form-label m-0" for="surname">Фамилия</label>
+            <input class="form-control" id="surname" name="surname" type="text" placeholder="Введите фамилию">
+        </div>
+    </div>
+    <div class="row m-0">
+        <div class="col-3">
+            <label class="form-label m-0" for="name">Имя</label>
+            <input class="form-control" id="name" name="name" type="text" placeholder="Введите имя">
+        </div>
+    </div>
+    <div class="row m-0">
+        <div class="col-3">
+            <label class="form-label m-0" for="patronymic">Отчество</label>
+            <input class="form-control" id="patronymic" name="patronymic" type="text" placeholder="Введите отчество">
+        </div>
+    </div>
+    <div class="row m-0">
+        <div class="col-4">
+            <label class="form-label m-0" for="fullAdress">Полный адрес</label>
+            <textarea rows="2" class="form-control" id="fullAdress" name="fullAdress" placeholder="Введите адрес"></textarea>
+        </div>
+    </div>
+    <div class="row m-0">
+        <div class="col-2">
+            <label class="form-label m-0" for="tel">Телефон</label>
+            <input class="form-control" id="tel" name="tel" type="text" placeholder="Введите телефон">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

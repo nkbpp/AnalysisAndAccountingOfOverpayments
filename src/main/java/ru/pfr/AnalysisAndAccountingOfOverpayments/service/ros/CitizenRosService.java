@@ -1,6 +1,5 @@
 package ru.pfr.AnalysisAndAccountingOfOverpayments.service.ros;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.ros.citizen.CitizenRos;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.repository.ros.CitizenJpaRepository;
@@ -10,11 +9,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CitizenService {
+public class CitizenRosService {
 
     private final CitizenJpaRepository repository;
 
-    public CitizenService(CitizenJpaRepository repository) {
+    public CitizenRosService(CitizenJpaRepository repository) {
         this.repository = repository;
     }
 

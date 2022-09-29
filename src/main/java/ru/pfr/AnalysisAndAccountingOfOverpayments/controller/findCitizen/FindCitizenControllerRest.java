@@ -10,7 +10,7 @@ import ru.pfr.AnalysisAndAccountingOfOverpayments.model.dto.findCitizen.fio.FIOD
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.dto.findCitizen.snils.SNILSDto;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.ros.citizen.CitizenRos;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.mappers.citizen.CitizenRosMapper;
-import ru.pfr.AnalysisAndAccountingOfOverpayments.service.ros.CitizenService;
+import ru.pfr.AnalysisAndAccountingOfOverpayments.service.ros.CitizenRosService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -21,11 +21,11 @@ import java.util.stream.Collectors;
 public class FindCitizenControllerRest {
 
     private final CitizenRosMapper citizenRosMapper;
-    private final CitizenService citizenService;
+    private final CitizenRosService citizenRosService;
 
-    public FindCitizenControllerRest(CitizenRosMapper citizenRosMapper, CitizenService citizenService) {
+    public FindCitizenControllerRest(CitizenRosMapper citizenRosMapper, CitizenRosService citizenRosService) {
         this.citizenRosMapper = citizenRosMapper;
-        this.citizenService = citizenService;
+        this.citizenRosService = citizenRosService;
     }
 
     @PostMapping(path ="/findCitizenSNILS", //produces = MediaType.APPLICATION_JSON_VALUE,
@@ -35,7 +35,7 @@ public class FindCitizenControllerRest {
                                                                   @RequestParam(defaultValue = "1") Integer pagination,
                                                                   Model model) {
         try {
-            List<CitizenRos> citizenRos = citizenService
+            List<CitizenRos> citizenRos = citizenRosService
                     .findBySnils(snils.getSnils(), pagination, col);
             return new ResponseEntity<>(citizenRos.stream()
                     .map(citizen1 -> citizenRosMapper.toDto(citizen1))
@@ -54,7 +54,7 @@ public class FindCitizenControllerRest {
                                               @RequestParam(defaultValue = "1") Integer pagination,
                                               Model model) {
         try {
-            List<CitizenRos> citizenRos = citizenService
+            List<CitizenRos> citizenRos = citizenRosService
                     .findByFioAndDate(fio.getSurname(), fio.getName(), fio.getPatronymic(), fio.getDateOfBirth(), pagination, col);
             return new ResponseEntity<>(
                     citizenRos.stream()
@@ -73,7 +73,7 @@ public class FindCitizenControllerRest {
                                            @RequestParam(defaultValue = "1") Integer pagination,
                                            Model model) {
         try {
-            List<CitizenRos> citizenRos = citizenService
+            List<CitizenRos> citizenRos = citizenRosService
                     .findByDistrict(district.getNumDistrict(), pagination, col);
             return new ResponseEntity<>(
                     citizenRos.stream()
