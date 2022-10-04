@@ -11,6 +11,7 @@ import java.util.Optional;
 public interface DistrictRepository extends JpaRepository<District, String> {
 
     Optional<District> findById(Long id);
+    Optional<District> findByKod(Integer id);
 
     void deleteById(Long id);
 

@@ -10,25 +10,25 @@ import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class DistrictDtoTest {
+class NumDistrictDtoTest {
 
     private final Validator validator = Validation.buildDefaultValidatorFactory()
             .getValidator();
 
     @Test
     public void whenAllAcceptable() {
-        DistrictDto district = new DistrictDto(2);
+        NumDistrictDto district = new NumDistrictDto(2);
 
-        Set<ConstraintViolation<DistrictDto>> violations = validator.validate(district);
+        Set<ConstraintViolation<NumDistrictDto>> violations = validator.validate(district);
 
         assertThat(violations).isEmpty();
     }
 
     @Test
     public void whenAllNull() {
-        DistrictDto district = new DistrictDto(null);
+        NumDistrictDto district = new NumDistrictDto(null);
 
-        Set<ConstraintViolation<DistrictDto>> violations = validator.validate(district);
+        Set<ConstraintViolation<NumDistrictDto>> violations = validator.validate(district);
 
         assertThat(violations).anyMatch(
                 testObjectConstraintViolation ->
@@ -38,9 +38,9 @@ class DistrictDtoTest {
 
     @Test
     public void whenDistrictLessThanZero() {
-        DistrictDto district = new DistrictDto(-1);
+        NumDistrictDto district = new NumDistrictDto(-1);
 
-        Set<ConstraintViolation<DistrictDto>> violations = validator.validate(district);
+        Set<ConstraintViolation<NumDistrictDto>> violations = validator.validate(district);
 
         assertThat(violations.size()).isEqualTo(1);
         assertThat(violations).anyMatch(
@@ -51,9 +51,9 @@ class DistrictDtoTest {
 
     @Test
     public void whenDistrictMoreThanTwentySeven() {
-        DistrictDto district = new DistrictDto(28);
+        NumDistrictDto district = new NumDistrictDto(28);
 
-        Set<ConstraintViolation<DistrictDto>> violations = validator.validate(district);
+        Set<ConstraintViolation<NumDistrictDto>> violations = validator.validate(district);
 
         assertThat(violations.size()).isEqualTo(1);
         assertThat(violations).anyMatch(

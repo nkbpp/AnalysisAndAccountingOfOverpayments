@@ -7,6 +7,7 @@ import ru.pfr.AnalysisAndAccountingOfOverpayments.repository.ros.CitizenJpaRepos
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CitizenRosService {
@@ -52,6 +53,26 @@ public class CitizenRosService {
     public List<CitizenRos> findBySnils(String snils){
         return repository
                 .findBySnils(snils).orElse(null);
+    }
+
+    public CitizenRos findPensionerBySnils(String snils){
+        return repository
+                .findBySnils(snils)
+                .orElse(null)
+                .stream()
+                .filter((p) -> (p.getPw()==null || p.getPw().equals("0")))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public List<CitizenRos> findIjdBySnils(String snils){
+        return repository
+                .findIjdBySnils(snils).orElse(null);
+    }
+
+    public List<CitizenRos> findCarerBySnils(String snils){
+        return repository
+                .findPEBySnils(snils).orElse(null);
     }
 
     public List<CitizenRos> findBySnils(String snils, int pagination, int col){

@@ -20,6 +20,9 @@ public class DistrictService {
         return repository.findById(id).orElse(null);
     }
 
+    public District findByKod(Integer id){
+        return repository.findByKod(id).orElse(null);
+    }
     public List<District> findAll(){
         return repository.findAll();
     }

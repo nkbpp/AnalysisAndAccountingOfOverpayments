@@ -27,6 +27,24 @@ public interface CitizenJpaRepository extends JpaRepository<CitizenRos, String> 
             nativeQuery = true)
     Optional<List<CitizenRos>> findByFioAndDate(String surname, String name, String patronymic, LocalDate date);
 
+    @Query(
+            value = "SELECT * FROM PF.MAN " +
+                    "WHERE id in(" +
+                    "SELECT ID_IJD FROM PF.IJD WHERE id IN(" +
+                    "SELECT ID FROM PF.MAN WHERE NPERS = ?1" +
+                    "))",
+            nativeQuery = true)
+    Optional<List<CitizenRos>> findIjdBySnils(String snils);
+
+    @Query(
+            value = "SELECT * " +
+                    "FROM PF.MAN WHERE id in(" +
+                    "SELECT ID_UHOD  " +
+                    "FROM PF.PE WHERE id IN(SELECT ID FROM PF.MAN WHERE NPERS = ?1) AND SROKS = (SELECT MAX(SROKS) FROM PF.PE WHERE id IN(SELECT ID FROM PF.MAN WHERE NPERS = ?1))" +
+                    ")",
+            nativeQuery = true)
+    Optional<List<CitizenRos>> findPEBySnils(String snils);
+
     Optional<List<CitizenRos>> findByDistrictOrderByRdatDesc(Integer district);
 
     Optional<List<CitizenRos>> findBySnils(String snils);

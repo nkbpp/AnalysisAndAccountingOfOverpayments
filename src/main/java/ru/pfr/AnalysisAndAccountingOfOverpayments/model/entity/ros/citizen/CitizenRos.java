@@ -43,6 +43,8 @@ public class CitizenRos extends SuperIDFIO {
     @Column(name = "NPERS")
     private String snils;
 
+    @Column(name = "PW")
+    private String pw;
 
 
     @Builder

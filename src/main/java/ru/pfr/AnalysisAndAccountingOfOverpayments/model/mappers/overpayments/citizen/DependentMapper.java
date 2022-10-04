@@ -1,12 +1,18 @@
 package ru.pfr.AnalysisAndAccountingOfOverpayments.model.mappers.overpayments.citizen;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.dto.overpayments.citizen.DependentDto;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.overpayments.citizen.Dependent;
+import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.ros.citizen.CitizenRos;
+import ru.pfr.AnalysisAndAccountingOfOverpayments.service.overpayments.referenceBook.DistrictService;
+import ru.pfr.AnalysisAndAccountingOfOverpayments.service.ros.CitizenRosService;
 
 @Component
+@RequiredArgsConstructor
 public class DependentMapper {
-
+    private final CitizenRosService citizenRosService;
+    private final DistrictService districtService;
     public DependentDto toDto(Dependent obj) {
         return DependentDto.builder()
                 .id(obj.getId())
@@ -20,6 +26,15 @@ public class DependentMapper {
     }
 
     public Dependent fromDto(DependentDto dto) {
+
+        CitizenRos citizenRos = citizenRosService.findBySnils(dto.getSnils())
+                .stream()
+                .filter(citizenRos1 ->
+                        citizenRos1.getName().equalsIgnoreCase(dto.getName()) &&
+                        citizenRos1.getSurname().equalsIgnoreCase(dto.getSurname()) &&
+                        citizenRos1.getPatronymic().equalsIgnoreCase(dto.getPatronymic())
+                        ).findFirst().orElse(new CitizenRos());
+
         return Dependent.builder()
                 .id(dto.getId())
                 .snils(dto.getSnils())
@@ -28,6 +43,7 @@ public class DependentMapper {
                 .patronymic(dto.getPatronymic())
                 .adrreg(dto.getAdrreg())
                 .tel(dto.getTel())
+                .district(districtService.findByKod(citizenRos.getDistrict()))
                 .build();
     }
 

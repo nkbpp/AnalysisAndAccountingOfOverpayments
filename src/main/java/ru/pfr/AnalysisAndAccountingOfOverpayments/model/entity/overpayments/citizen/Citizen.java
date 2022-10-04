@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.annotations.snils.CheckSNILS;
+import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.overpayments.referenceBook.District;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -34,12 +35,16 @@ public class Citizen {
 
     private String tel;
 
-    public Citizen(String snils, String surname, String name, String patronymic, String adrreg, String tel) {
+    @ManyToOne(/*fetch = FetchType.LAZY, */cascade = CascadeType.REMOVE)
+    private District district;
+
+    public Citizen(String snils, String surname, String name, String patronymic, String adrreg, String tel, District district) {
         this.snils = snils;
         this.surname = surname;
         this.name = name;
         this.patronymic = patronymic;
         this.adrreg = adrreg;
         this.tel = tel;
+        this.district = district;
     }
 }

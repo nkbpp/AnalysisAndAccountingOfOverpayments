@@ -1,12 +1,12 @@
 package ru.pfr.AnalysisAndAccountingOfOverpayments.controller.addCitizen;
 
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.dto.overpayments.citizen.PensionerDto;
+import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.overpayments.citizen.Pensioner;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.mappers.overpayments.citizen.PensionerMapper;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.service.overpayments.citizen.PensionerService;
 
@@ -19,6 +19,7 @@ public class AddCitizenControllerRest2 {
 
     private final PensionerMapper pensionerMapper;
 
+
     /**
      * Добавление
      */
@@ -26,7 +27,8 @@ public class AddCitizenControllerRest2 {
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<?> add(@RequestBody PensionerDto pensionerDto) {
         try {
-            pensionerService.save(pensionerMapper.fromDto(pensionerDto));
+            Pensioner pensioner = pensionerMapper.fromDto(pensionerDto);
+            pensionerService.save(pensioner);
             return new ResponseEntity<>(HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

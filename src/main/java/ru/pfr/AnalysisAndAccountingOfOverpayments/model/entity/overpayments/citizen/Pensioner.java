@@ -3,9 +3,11 @@ package ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.overpayments.cit
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.overpayments.referenceBook.District;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
@@ -23,20 +25,20 @@ public class Pensioner extends Citizen {
     private List<Dependent> dependents = new ArrayList<>();
 
     @Builder
-    public Pensioner(Long id, String snils, String surname, String name, String patronymic, String adrreg, String tel, List<Carer> carers, List<Dependent> dependents) {
-        super(id, snils, surname, name, patronymic, adrreg, tel);
+    public Pensioner(Long id, String snils, String surname, String name, String patronymic, String adrreg, String tel, District district, List<Carer> carers, List<Dependent> dependents) {
+        super(id, snils, surname, name, patronymic, adrreg, tel, district);
         this.carers = carers;
         this.dependents = dependents;
     }
 
-    public Pensioner(String snils, String surname, String name, String patronymic, String adrreg, String tel, List<Carer> carers, List<Dependent> dependents) {
-        super(snils, surname, name, patronymic, adrreg, tel);
+    public Pensioner(String snils, String surname, String name, String patronymic, String adrreg, String tel, District district, List<Carer> carers, List<Dependent> dependents) {
+        super(snils, surname, name, patronymic, adrreg, tel, district);
         this.carers = carers;
         this.dependents = dependents;
     }
 
-    public Pensioner(String snils, String surname, String name, String patronymic, String adrreg, String tel) {
-        super(snils, surname, name, patronymic, adrreg, tel);
+    public Pensioner(String snils, String surname, String name, String patronymic, String adrreg, String tel, District district) {
+        super(snils, surname, name, patronymic, adrreg, tel, district);
     }
 
     public void addCarer(Carer carer) {

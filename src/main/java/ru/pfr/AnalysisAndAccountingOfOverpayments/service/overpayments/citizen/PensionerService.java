@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.overpayments.citizen.Carer;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.overpayments.citizen.Dependent;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.overpayments.citizen.Pensioner;
+import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.overpayments.referenceBook.District;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.entity.overpayments.referenceBook.ReasonsForOverpayments;
 import ru.pfr.AnalysisAndAccountingOfOverpayments.repository.overpayments.citizen.PensionerJpaRepository;
 
@@ -36,15 +37,14 @@ public class PensionerService {
                 pagination, col);
     }
 
-/*    public List<Pensioner> findByDistrict(Integer district){
-        return repository
-                .findByDistrict(district).orElse(null);
+    public List<Pensioner> findByDistrict(District district){
+        return repository.findByDistrict(district).orElse(null);
     }
 
-    public List<Pensioner> findByDistrict(Integer district, int pagination, int col){
+    public List<Pensioner> findByDistrict(District district, int pagination, int col){
         return cutTheList(repository
                 .findByDistrict(district).orElse(null), pagination, col);
-    }*/
+    }
 
     public List<Pensioner> findBySnils(String snils){
         return repository

@@ -2,7 +2,7 @@ package ru.pfr.AnalysisAndAccountingOfOverpayments.model.dto.findCitizen.distric
 
 import ru.pfr.AnalysisAndAccountingOfOverpayments.model.annotations.district.District;
 
-public class DistrictDto {
+public class NumDistrictDto {
 
     /****
      Белгороде 1
@@ -32,10 +32,10 @@ public class DistrictDto {
     @District
     private Integer numDistrict;
 
-    public DistrictDto() {
+    public NumDistrictDto() {
     }
 
-    public DistrictDto(Integer numDistrict) {
+    public NumDistrictDto(Integer numDistrict) {
         this.numDistrict = numDistrict;
     }
 

@@ -15,6 +15,7 @@ public class DistrictMapper {
                 .build();
     }
 
+
     public District fromDto(DistrictDto dto) {
         return District.builder()
                 .id(dto.getId())
@@ -22,5 +23,6 @@ public class DistrictMapper {
                 .name(dto.getName())
                 .build();
     }
+
 
 }
